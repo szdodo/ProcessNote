@@ -15,6 +15,7 @@ namespace ProcessNote
     public partial class Form1 : Form
     {
         Process[] processlist = Process.GetProcesses();
+        List<string> Comments = new List<string>();
 
         public Form1()
         {
@@ -90,12 +91,30 @@ namespace ProcessNote
             var comment = CommentBox.Text;
             var newContent = ProcessListBox.SelectedItem + "\t\t\t\t" + comment;
             ProcessListBox.Items[ProcessListBox.SelectedIndex] = newContent;
+            Comments.Add(newContent);
             CommentBox.Clear();
         }
 
         private void ProcessListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             UpdateData();
+        }
+
+        private void TopCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (TopCheckBox.Checked)
+            {
+                Form1.ActiveForm.TopMost = true;
+            }
+            else
+            {
+                Form1.ActiveForm.TopMost = false;
+            }
+        }
+
+        private void AllCommBtn_Click(object sender, EventArgs e)
+        {
+            //Form.ShowDialog(this);
         }
     }
 }
