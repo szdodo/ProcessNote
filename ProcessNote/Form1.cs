@@ -14,7 +14,7 @@ namespace ProcessNote
 {
     public partial class Form1 : Form
     {
-        Process[] processlist = Process.GetProcesses();
+        Process[] processlist;
         List<string> Comments = new List<string>();
 
         public Form1()
@@ -26,9 +26,16 @@ namespace ProcessNote
         {
             EndBtn.Enabled = false;
             CommentBtn.Enabled = false;
+            UpdateListBox();
+        }
+
+        private void UpdateListBox()
+        {
+            ProcessListBox.Items.Clear();
+            processlist= Process.GetProcesses();
             foreach (Process theprocess in processlist)
             {
-                ProcessListBox.Items.Add(theprocess.Id+"\t"+ theprocess.ProcessName);
+                ProcessListBox.Items.Add(theprocess.Id + "\t" + theprocess.ProcessName);
             }
         }
 
@@ -52,18 +59,11 @@ namespace ProcessNote
             try
             {
                 StartLabel2.Text = currentProc.StartTime.ToString();
-            }
-            catch (Win32Exception)
-            {
-                StartLabel2.Text = "No Data Available";
-            }
-
-            try
-            {
                 RunningLabel2.Text = currentProc.TotalProcessorTime.ToString();
             }
             catch (Win32Exception)
             {
+                StartLabel2.Text = "No Data Available";
                 RunningLabel2.Text = "No Data Available";
             }
         }
@@ -71,6 +71,7 @@ namespace ProcessNote
         private void EndButton_Click(object sender, EventArgs e)
         {
             processlist[ProcessListBox.SelectedIndex].Kill();
+            UpdateListBox();
         }
 
         private void StartButton_Click(object sender, EventArgs e)
@@ -84,6 +85,8 @@ namespace ProcessNote
             catch(System.ComponentModel.Win32Exception){
                 MessageBox.Show("Invalid input, no process found!");
             }
+            StartTextBox.Clear();
+            UpdateListBox();
         }
 
         private void CommentBtn_Click(object sender, EventArgs e)
