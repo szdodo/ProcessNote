@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TopCheckBox = new System.Windows.Forms.CheckBox();
             this.CommentBtn = new System.Windows.Forms.Button();
             this.CommentBox = new System.Windows.Forms.TextBox();
             this.RunningLabel2 = new System.Windows.Forms.Label();
@@ -44,14 +45,11 @@
             this.EndBtn = new System.Windows.Forms.Button();
             this.ProcessListBox = new System.Windows.Forms.ListBox();
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
-            this.TopCheckBox = new System.Windows.Forms.CheckBox();
-            this.AllCommBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.AllCommBtn);
             this.groupBox1.Controls.Add(this.TopCheckBox);
             this.groupBox1.Controls.Add(this.CommentBtn);
             this.groupBox1.Controls.Add(this.CommentBox);
@@ -69,10 +67,21 @@
             this.groupBox1.Controls.Add(this.ProcessListBox);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(793, 413);
+            this.groupBox1.Size = new System.Drawing.Size(793, 390);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Running Processes";
+            // 
+            // TopCheckBox
+            // 
+            this.TopCheckBox.AutoSize = true;
+            this.TopCheckBox.Location = new System.Drawing.Point(16, 50);
+            this.TopCheckBox.Name = "TopCheckBox";
+            this.TopCheckBox.Size = new System.Drawing.Size(98, 17);
+            this.TopCheckBox.TabIndex = 15;
+            this.TopCheckBox.Text = "Always On Top";
+            this.TopCheckBox.UseVisualStyleBackColor = true;
+            this.TopCheckBox.CheckedChanged += new System.EventHandler(this.TopCheckBox_CheckedChanged);
             // 
             // CommentBtn
             // 
@@ -149,9 +158,9 @@
             this.CPULabel2.AutoSize = true;
             this.CPULabel2.Location = new System.Drawing.Point(227, 45);
             this.CPULabel2.Name = "CPULabel2";
-            this.CPULabel2.Size = new System.Drawing.Size(13, 13);
+            this.CPULabel2.Size = new System.Drawing.Size(27, 13);
             this.CPULabel2.TabIndex = 6;
-            this.CPULabel2.Text = "0";
+            this.CPULabel2.Text = "N/A";
             // 
             // CPULabel1
             // 
@@ -206,32 +215,11 @@
             this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
             this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
-            // TopCheckBox
-            // 
-            this.TopCheckBox.AutoSize = true;
-            this.TopCheckBox.Location = new System.Drawing.Point(16, 50);
-            this.TopCheckBox.Name = "TopCheckBox";
-            this.TopCheckBox.Size = new System.Drawing.Size(98, 17);
-            this.TopCheckBox.TabIndex = 15;
-            this.TopCheckBox.Text = "Always On Top";
-            this.TopCheckBox.UseVisualStyleBackColor = true;
-            this.TopCheckBox.CheckedChanged += new System.EventHandler(this.TopCheckBox_CheckedChanged);
-            // 
-            // AllCommBtn
-            // 
-            this.AllCommBtn.Location = new System.Drawing.Point(652, 384);
-            this.AllCommBtn.Name = "AllCommBtn";
-            this.AllCommBtn.Size = new System.Drawing.Size(114, 23);
-            this.AllCommBtn.TabIndex = 16;
-            this.AllCommBtn.Text = "Show All Comments";
-            this.AllCommBtn.UseVisualStyleBackColor = true;
-            this.AllCommBtn.Click += new System.EventHandler(this.AllCommBtn_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 428);
+            this.ClientSize = new System.Drawing.Size(817, 410);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -261,7 +249,6 @@
         private System.Windows.Forms.Button CommentBtn;
         private System.Windows.Forms.TextBox CommentBox;
         private System.Windows.Forms.CheckBox TopCheckBox;
-        private System.Windows.Forms.Button AllCommBtn;
     }
 }
 

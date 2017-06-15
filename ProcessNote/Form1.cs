@@ -32,7 +32,7 @@ namespace ProcessNote
         private void UpdateListBox()
         {
             ProcessListBox.Items.Clear();
-            processlist= Process.GetProcesses();
+            processlist = Process.GetProcesses();
             foreach (Process theprocess in processlist)
             {
                 ProcessListBox.Items.Add(theprocess.Id + "\t" + theprocess.ProcessName);
@@ -79,10 +79,12 @@ namespace ProcessNote
             string NewProc = StartTextBox.Text;
             Process process = new Process();
             process.StartInfo.FileName = NewProc;
-            try{
+            try
+            {
                 process.Start();
             }
-            catch(System.ComponentModel.Win32Exception){
+            catch (System.ComponentModel.Win32Exception)
+            {
                 MessageBox.Show("Invalid input, no process found!");
             }
             StartTextBox.Clear();
@@ -113,11 +115,6 @@ namespace ProcessNote
             {
                 Form1.ActiveForm.TopMost = false;
             }
-        }
-
-        private void AllCommBtn_Click(object sender, EventArgs e)
-        {
-            //Form.ShowDialog(this);
         }
     }
 }
